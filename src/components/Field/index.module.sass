@@ -1,0 +1,59 @@
+@import '../../assets/styles/_colors'
+@import '../../assets/styles/_mixins'
+
+.field
+  width: 100%
+  display: inline-flex
+  align-content: center
+  align-items: center
+  font-size: 1.6rem
+  line-height: 2.2rem
+  font-weight: 300
+  padding: 12px 20px
+  color: color(black)
+  outline: none
+  border-radius: 5px
+  border: 2px solid color(input-border-color)
+  background-color: color(white)
+  box-sizing: border-box
+  @include transition
+
+  &:focus,
+  &:active
+    border-color: color(gold)
+
+  &:disabled
+    background-color: #d0d0d0
+
+.fieldset
+  border: 0
+  padding: 0
+  margin: 0
+  width: 100%
+  display: flex
+  flex-wrap: wrap
+  position: relative
+
+.label
+  display: inline-flex
+  width: 100%
+  font-size: 1.5rem
+  font-weight: 300
+  color: color(black)
+  margin-bottom: 5px
+  padding-left: 25px
+  box-sizing: border-box
+
+.error
+  border-color: color(red) !important
+  margin-bottom: 7px
+
+.description
+  font-size: 1.2rem
+  line-height: 1.5rem
+  color: color(black)
+  box-sizing: border-box
+  padding-left: 3px
+
+.descriptionError
+  color: color(red)
