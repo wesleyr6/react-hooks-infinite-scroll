@@ -1,0 +1,55 @@
+@import '../../assets/styles/_colors'
+@import '../../assets/styles/_mixins'
+
+.btn
+  background-color: color(gold)
+  border-radius: 2.5rem
+  border: none
+  color: color(white)
+  cursor: pointer
+  display: inline-flex
+  font-size: 1.8rem
+  font-weight: 400
+  line-height: 2.4rem
+  padding: 12px 40px
+  justify-content: center
+  align-items: center
+  border: 1px solid color(gold)
+  text-decoration: none
+  width: auto
+  outline: none
+  @include transition
+
+  &:disabled
+    background-color: color(light-gray) !important
+    border-color: color(light-gray) !important
+    color: color(gray) !important
+    cursor: not-allowed
+
+  &:hover, &:active, &:focus
+    background-color: darken(color(gold), 7)
+    text-decoration: none
+
+  &.small
+    font-size: 1.5rem
+    padding: 8px 30px
+
+  &.large
+    font-size: 2rem
+    padding: 17px 50px
+    border-radius: 3.5rem
+
+  &.no-theme
+    background-color: transparent
+    border-color: transparent
+
+  @each $name, $color in $colors
+    &.#{$name}-theme
+      background-color: $color
+      color: set-notification-text-color($color)
+      border-color: $color
+
+      &:hover, &:active, &:focus
+        background-color: darken($color, 10)
+        color: set-notification-text-color($color)
+        text-decoration: none
