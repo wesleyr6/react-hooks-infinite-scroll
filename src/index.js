@@ -4,12 +4,11 @@ import Routers from "./routers";
 import * as serviceWorker from "./serviceWorker";
 import "./assets/styles/index.sass";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Routers />
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+// EXTERNAL CSS
+import "react-lazy-load-image-component/src/effects/blur.css";
+import "react-datepicker/dist/react-datepicker.css";
+
+ReactDOM.render(<Routers />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
