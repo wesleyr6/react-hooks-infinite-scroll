@@ -1,0 +1,64 @@
+@import '_colors'
+
+.datepicker-default
+  .react-datepicker__triangle
+    border-bottom-color: color(white) !important
+
+  .react-datepicker__navigation--next,
+  .react-datepicker__navigation--previous
+    top: 13px
+    outline: none
+
+  .react-datepicker__navigation--next
+    border-left-color: color(black)
+
+  .react-datepicker__navigation--previous
+    border-right-color: color(black)
+
+  .react-datepicker__day,
+  .react-datepicker__day-name
+    width: 3.5rem
+    line-height: 3rem
+
+  .react-datepicker__day-name
+    line-height: 2rem
+    text-transform: uppercase
+
+  .react-datepicker__current-month,
+  .react-datepicker-time__header,
+  .react-datepicker-year-header,
+  .react-datepicker__day
+    font-size: 1.4rem
+
+  .react-datepicker__current-month
+    padding: 3px 0 10px
+    border-bottom: 1px solid color(input-border-color)
+
+  .react-datepicker__header
+    background-color: color(white)
+    border: none
+
+  .react-datepicker__day--selected,
+  .react-datepicker__day--keyboard-selected
+    color: color(black) !important
+    background-color: color(gold) !important
+    font-weight: 600
+
+  .react-datepicker__day-names
+    font-size: 1.3rem
+    margin-top: 5px
+    font-weight: 600
+    color: color(black)
+
+  .react-datepicker__week
+    .react-datepicker__day
+      &:hover
+        background-color: color(purple)
+        color: color(white)
+
+      &.react-datepicker__day--today
+        color: color(black)
+
+      &.react-datepicker__day--disabled
+        color: #e2e2e2
+        cursor: not-allowed
