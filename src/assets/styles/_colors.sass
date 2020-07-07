@@ -1,0 +1,18 @@
+@import './variables'
+
+@function set-notification-text-color($colorItem)
+  @if (lightness($colorItem) > 60)
+    @return #000000
+  @else
+    @return #ffffff
+
+@each $color in $colors
+  .bg-#{nth($color, 1)}
+    background-color: nth($color, 2)
+    color: set-notification-text-color(nth($color, 2))
+
+@function color($key)
+  @if map-has-key($colors, $key)
+    @return map-get($colors, $key)
+  @warn "Unknown `#{$key}` in $colors."
+  @return null

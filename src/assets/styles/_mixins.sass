@@ -1,0 +1,26 @@
+@import './colors'
+
+@mixin ellipsis
+  white-space: nowrap
+  overflow: hidden
+  text-overflow: ellipsis
+
+@mixin transition
+  transition: all 0.25s ease-in-out
+
+@mixin box-shadow
+  box-shadow: 0 2px 6px 0 #2b2b2b21
+
+@mixin arrow($size: 10px, $color: color(light-gray), $direction: 'top')
+  width: 0
+  height: 0
+  border: $size solid transparent
+
+  @if $direction == left
+    border-right: $size solid $color
+  @else if $direction == right
+    border-left: $size solid $color
+  @else if $direction == bottom
+    border-top: $size solid $color
+  @else
+    border-bottom: $size solid $color

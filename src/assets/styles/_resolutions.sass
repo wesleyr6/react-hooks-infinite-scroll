@@ -1,0 +1,6 @@
+@import './variables'
+
+=device($breakpoint)
+  @if map-has-key($breakpoints, $breakpoint)
+    @media screen and (max-width: #{map-get($breakpoints, $breakpoint)})
+      @content
