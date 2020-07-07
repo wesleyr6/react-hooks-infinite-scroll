@@ -1,0 +1,45 @@
+@import '../../assets/styles/colors'
+
+.card
+  width: 100%
+  list-style: none
+  box-sizing: border-box
+
+  &:nth-child(even)
+    background-color: color(white)
+
+  &:nth-child(odd)
+    background-color: #f9f9f9
+
+  a
+    display: flex
+    width: 100%
+    padding: 10px
+    text-decoration: none
+
+.thumbnail
+  width: 200px
+  height: 200px
+  background-color: color(light-gray)
+
+.content
+  width: calc(100% - 200px) // thumbanail size
+  box-sizing: border-box
+  padding-left: 20px
+
+.title
+  width: 100%
+  display: block
+  font-size: 1.8rem
+  line-height: 2.4rem
+  color: color(black)
+  font-weight: 500
+  margin-bottom: 10px
+
+.description
+  width: 100%
+  display: block
+  font-size: 1.5rem
+  line-height: 2.2rem
+  color: color(black)
+  font-weight: 300
