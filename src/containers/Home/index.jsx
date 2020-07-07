@@ -1,28 +1,42 @@
-import React from "react";
+import React, { useContext } from "react";
 import Head from "../../components/Head";
+import MasterPage from "../../components/MasterPage";
+import Wrapper from "../../components/Wrapper";
+import Search from "../../components/Search";
+import SearchContext from "../../context/search";
+import Loader from "../../components/Loader";
+import AlertMessages from "../../components/AlertMessages";
+import ListOfItems from "../../components/ListOfItems";
 import "./index.sass";
 
-function App() {
+const Home = () => {
+  const { searchLoading, searchResults, searchError } = useContext(
+    SearchContext
+  );
+
   return (
-    <div className="App">
+    <>
       <Head title="Stolen Bikes" description="" uri="/" image="" />
 
-      <header className="App-header">
-        <img src="/logo192.png" className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+      <MasterPage>
+        <Wrapper>
+          <Search />
 
-export default App;
+          <AlertMessages
+            show={!searchLoading && !!searchError}
+            type="error"
+            message={searchError}
+          />
+
+          {searchLoading && <Loader />}
+
+          {!searchLoading && searchResults.length > 0 && (
+            <ListOfItems items={searchResults} />
+          )}
+        </Wrapper>
+      </MasterPage>
+    </>
+  );
+};
+
+export default Home;
