@@ -1,13 +1,16 @@
 import Home from "../containers/Home";
 import Page404 from "../containers/404";
 
+// CONTEXT
+import { SearchProvider } from "../context/search";
+
 const myRoutes = [
   {
     path: "/",
     active: true,
     private: false,
     component: Home,
-    context: null,
+    context: SearchProvider,
     permissions: [],
     routerProps: {},
   },

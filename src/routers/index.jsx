@@ -15,6 +15,7 @@ const Routers = () => (
               exact
               path={item.path}
               component={item.component}
+              context={item.context}
               permissions={item.permissions}
               routerProps={item.routerProps}
             />
