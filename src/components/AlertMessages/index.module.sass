@@ -1,0 +1,36 @@
+@import '../../assets/styles/colors'
+
+.alertMessages
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+  width: 100%
+  padding: 20px
+  box-sizing: border-box
+  font-size: 1.8rem
+  line-height: 2.6rem
+  margin-bottom: 25px
+
+  &-error
+    background-color: color(light-red)
+    color: color(white)
+
+  &-warning
+    background-color: color(yellow)
+    color: color(black)
+
+  &-success
+    background-color: color(green)
+    color: color(black)
+
+  &-info
+    background-color: color(blue)
+    color: color(white)
+
+.icon
+  margin-top: -1px
+  font-size: 2.7rem
+  color: color(white)
+
+.messageDescription
+  width: calc(100% - 38px)
