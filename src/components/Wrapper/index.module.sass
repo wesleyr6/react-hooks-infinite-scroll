@@ -1,0 +1,15 @@
+@import '../../assets/styles/_resolutions'
+
+.wrapper
+  width: 100%
+  max-width: 1366px
+  margin: 0 auto
+  display: flex
+  flex-wrap: wrap
+  box-sizing: border-box
+  @include device(desktop)
+    padding-right: 25px
+    padding-left: 25px
+  @include device(small-tablet)
+    padding-right: 15px
+    padding-left: 15px
