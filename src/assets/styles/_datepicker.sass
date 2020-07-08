@@ -1,4 +1,5 @@
-@import '_colors'
+@import 'colors'
+@import 'mixins'
 
 .datepicker-default
   .react-datepicker__triangle
@@ -40,8 +41,8 @@
 
   .react-datepicker__day--selected,
   .react-datepicker__day--keyboard-selected
-    color: color(black) !important
-    background-color: color(gold) !important
+    color: color(white) !important
+    background-color: color(black) !important
     font-weight: 600
 
   .react-datepicker__day-names
@@ -52,8 +53,10 @@
 
   .react-datepicker__week
     .react-datepicker__day
+      @include transition
+
       &:hover
-        background-color: color(purple)
+        background-color: color(gold)
         color: color(white)
 
       &.react-datepicker__day--today

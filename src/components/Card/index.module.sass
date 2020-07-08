@@ -1,9 +1,13 @@
 @import '../../assets/styles/colors'
+@import '../../assets/styles/resolutions'
 
 .card
   width: 100%
   list-style: none
   box-sizing: border-box
+  display: flex
+  flex-wrap: wrap
+  padding: 10px
 
   &:nth-child(even)
     background-color: color(white)
@@ -11,21 +15,40 @@
   &:nth-child(odd)
     background-color: #f9f9f9
 
-  a
-    display: flex
+.thumbnailLink
+  display: inline-flex
+  justify-content: center
+  width: 200px
+  height: 200px
+  background-color: color(light-gray)
+  overflow: hidden
+  @include device(small-tablet)
+    width: 150px
+    height: 150px
+  @include device(mobile)
     width: 100%
-    padding: 10px
-    text-decoration: none
+    height: 300px
 
 .thumbnail
   width: 200px
   height: 200px
-  background-color: color(light-gray)
+  object-fit: cover
+  @include device(small-tablet)
+    width: 150px
+    height: 150px
+  @include device(mobile)
+    width: 100%
+    height: 300px
 
 .content
   width: calc(100% - 200px) // thumbanail size
   box-sizing: border-box
   padding-left: 20px
+  @include device(small-tablet)
+    width: calc(100% - 150px) // thumbanail size
+  @include device(mobile)
+    width: 100%
+    padding: 25px 0 0 0
 
 .title
   width: 100%

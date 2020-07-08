@@ -1,5 +1,6 @@
 @import '../../assets/styles/colors'
 @import '../../assets/styles/mixins'
+@import '../../assets/styles/resolutions'
 
 .list
   list-style: none
@@ -8,6 +9,8 @@
   flex-flow: row wrap
   margin: 40px 0 0 0
   padding: 0
+  @include device(mobile)
+    justify-content: center
 
   li
     display: inline-flex
@@ -17,6 +20,8 @@
 
     & + li
       margin-left: 5px
+      @include device(mobile)
+        margin-left: 0px
 
 .link
   padding: 5px 12px
@@ -24,6 +29,8 @@
   color: color(black)
   font-weight: 400
   @include transition
+  @include device(mobile)
+    padding: 5px 8px
 
   &:hover
     background-color: color(gold)

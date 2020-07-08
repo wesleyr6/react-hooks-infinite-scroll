@@ -1,18 +1,22 @@
+
+@import '../../assets/styles/resolutions'
+
 .header
   width: 100%
   box-sizing: border-box
   background-color: #f5f7fa
   box-shadow: 0 1px 1px #e9ecef
   padding: 10px 0
-
-.logoContainer
   display: inline-flex
-  align-items: center
+  align-content: center
   flex-wrap: wrap
 
 .logo
   width: 80px
   height: 80px
+  @include device(small-tablet)
+    width: 50px
+    height: 50px
 
 .logoContent
   display: flex
@@ -28,7 +32,13 @@
 .logoTitle
   font-size: 3rem
   margin-bottom: 3px
+  @include device(small-tablet)
+    font-size: 2rem
+  @include device(mobile)
+    font-size: 1.8rem
 
 .logoSubtitle
   font-size: 2rem
   font-weight: 300
+  @include device(small-tablet)
+    font-size: 1.5rem
