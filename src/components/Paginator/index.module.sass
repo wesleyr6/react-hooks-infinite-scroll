@@ -1,0 +1,38 @@
+@import '../../assets/styles/colors'
+@import '../../assets/styles/mixins'
+
+.list
+  list-style: none
+  width: 100%
+  display: flex
+  flex-flow: row wrap
+  margin: 40px 0 0 0
+  padding: 0
+
+  li
+    display: inline-flex
+    font-size: 1.5rem
+    color: color(black)
+    text-decoration: none
+
+    & + li
+      margin-left: 5px
+
+.link
+  padding: 5px 12px
+  text-decoration: none
+  color: color(black)
+  font-weight: 400
+  @include transition
+
+  &:hover
+    background-color: color(gold)
+    color: color(white)
+
+.activeLink
+  background-color: color(black)
+  color: color(white)
+
+  &:hover
+    background-color: color(black)
+    color: color(white)
