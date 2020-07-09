@@ -36,7 +36,7 @@ const Search = ({ children, history }) => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  const defaultDateFrom = new Date(moment().subtract(1, "months"));
+  const defaultDateFrom = new Date(moment().subtract(3, "days"));
   const defaultDateTo = new Date();
 
   const watchDateFrom = watch("txtDateFrom");
