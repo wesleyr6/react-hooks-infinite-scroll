@@ -34,14 +34,18 @@ const Search = ({ children, history }) => {
     SearchContext
   );
 
-  const [defaultSearch, setDefaultSearch] = useState("");
+  const defaultDateFrom = new Date(moment().subtract(1, "months"));
+  const defaultDateTo = new Date();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const watchDateFrom = watch("txtDateFrom");
   const watchDateTo = watch("txtDateTo");
 
   useEffect(() => {
-    if (!history.location.search) {
+    getQueryStringAndUpdateFields();
+
+    if (history.location.search === "") {
       updateSearchHistory(getValues());
     } else {
       fetchResults();
@@ -51,6 +55,7 @@ const Search = ({ children, history }) => {
   }, [history.location.search]);
 
   const onHandlePageChange = async (page) => {
+    setCurrentPage(page);
     setUpdateHistory([{ name: "page", value: page }]);
   };
 
@@ -79,31 +84,36 @@ const Search = ({ children, history }) => {
     updateSearchHistory(fields);
   };
 
-  const fetchResults = () => {
-    const { dateFrom, dateTo, search, page } =
+  const getQueryStringAndUpdateFields = () => {
+    const { dateFrom, dateTo, search } =
       queryString.parse(history.location.search) || "";
 
     if (dateFrom && isValidUnixDate(dateFrom)) {
       const formatDate = moment.unix(dateFrom).format();
-
-      if (formatDate) {
-        setValue("txtDateFrom", new Date(formatDate));
-      }
+      setValue("txtDateFrom", new Date(formatDate));
+    } else {
+      setValue("txtDateFrom", defaultDateFrom);
     }
 
     if (dateTo && isValidUnixDate(dateTo)) {
       const formatDate = moment.unix(dateTo).format();
-
-      if (formatDate) {
-        setValue("txtDateTo", new Date(formatDate));
-      }
+      setValue("txtDateTo", new Date(formatDate));
+    } else {
+      setValue("txtDateTo", defaultDateTo);
     }
 
-    if (search) {
-      setDefaultSearch(search);
+    if (search || search === "") {
+      setValue("txtSearch", search);
+    } else {
+      setValue("txtSearch", "");
     }
+  };
+
+  const fetchResults = () => {
+    // getQueryStringAndUpdateFields();
 
     const newFields = getValues();
+    const { page } = queryString.parse(history.location.search) || "";
 
     if (page && isNumber(page)) {
       setCurrentPage(Number(page));
@@ -136,7 +146,7 @@ const Search = ({ children, history }) => {
             name="txtSearch"
             id="txtSearch"
             placeholder="search case descriptions"
-            defaultValue={defaultSearch}
+            defaultValue=""
             inputErrors={errors}
             ref={register}
           />
@@ -146,7 +156,7 @@ const Search = ({ children, history }) => {
           <Controller
             control={control}
             name="txtDateFrom"
-            defaultValue={new Date(moment().subtract(3, "months"))}
+            defaultValue={defaultDateFrom}
             rules={{ required: true }}
             as={({ value, onChange }) => {
               return (
@@ -170,7 +180,7 @@ const Search = ({ children, history }) => {
           <Controller
             control={control}
             name="txtDateTo"
-            defaultValue={new Date()}
+            defaultValue={defaultDateTo}
             rules={{ required: true }}
             as={({ value, onChange }) => {
               return (
