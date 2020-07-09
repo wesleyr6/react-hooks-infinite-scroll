@@ -1,16 +1,10 @@
 const path = require("path");
 const express = require("express");
 const secure = require("ssl-express-www");
-const expressStaticGzip = require("express-static-gzip");
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 const app = express();
 
-app.use(
-  expressStaticGzip(path.join(__dirname, "build"), {
-    enableBrotli: true,
-  })
-);
 app.use(express.static(`${__dirname}/build`));
 app.use(secure);
 
