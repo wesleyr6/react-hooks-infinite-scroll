@@ -1,4 +1,5 @@
 @import '../../assets/styles/colors'
+@import '../../assets/styles/mixins'
 @import '../../assets/styles/resolutions'
 
 .card
@@ -55,9 +56,18 @@
   display: block
   font-size: 1.8rem
   line-height: 2.4rem
-  color: color(black)
+  color: color(blue)
   font-weight: 500
   margin-bottom: 10px
+  text-decoration: none
+  @include transition
+
+  a
+    color: color(blue)
+    text-decoration: none
+
+    &:hover
+      text-decoration: underline
 
 .description
   width: 100%
@@ -66,3 +76,4 @@
   line-height: 2.2rem
   color: color(black)
   font-weight: 300
+  margin-bottom: 5px

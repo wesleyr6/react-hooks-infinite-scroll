@@ -27,9 +27,13 @@ const Card = ({
       </Link>
 
       <div className={styles.content}>
-        <Link to={`/case/${id}`}>
-          <span className={styles.title}>{title}</span>
-        </Link>
+        <span className={styles.title}>
+          <Link to={`/case/${id}`}>{title}</Link>
+        </span>
+
+        {description && (
+          <span className={styles.description}>{description}</span>
+        )}
 
         {occurred_at && (
           <span className={styles.description}>
@@ -40,7 +44,7 @@ const Card = ({
 
         {updated_at && (
           <span className={styles.description}>
-            <strong>Updated at:</strong>{" "}
+            <strong>Reported at:</strong>{" "}
             {moment.unix(updated_at).format("dddd, MMMM Do YYYY, h:mm:ss a")}
           </span>
         )}
@@ -48,12 +52,6 @@ const Card = ({
         {address && (
           <span className={styles.description}>
             <strong>Location:</strong> {address}
-          </span>
-        )}
-
-        {description && (
-          <span className={styles.description}>
-            <strong>Description:</strong> {description}
           </span>
         )}
       </div>
