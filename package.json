@@ -7,6 +7,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
+    "compression": "^1.7.4",
     "express": "^4.17.1",
     "moment": "^2.27.0",
     "moment-timezone": "^0.5.31",
@@ -29,7 +30,7 @@
   "scripts": {
     "dev": "react-scripts start",
     "start": "node ./index.js",
-    "build": "react-scripts build",
+    "build": "react-scripts build && gzipper c --verbose ./build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
@@ -54,6 +55,7 @@
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-react": "^7.20.3",
-    "eslint-plugin-react-hooks": "^4.0.5"
+    "eslint-plugin-react-hooks": "^4.0.5",
+    "gzipper": "^4.0.0"
   }
 }
