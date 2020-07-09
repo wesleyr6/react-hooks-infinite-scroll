@@ -16,13 +16,12 @@ This project was built to practice React Hooks and Context API
 
 ### Environment vars
 
-At the root of your project, you need to create a file called `.env.local` to set all your vars environment into our application. The variable `REACT_APP_API_URL` will be called to get the root path API.
+At the root of your project, you need to create a file called `.env.local` to set all your vars environment into our application. The variable `REACT_APP_API_URL` will be called to get the API root path.
 
 ```
 PORT=3000
 REACT_APP_API_URL=https://bikewise.org/api/v2
 REACT_APP_GOOGLE_MAPS_KEY=your_google_maps_key
-
 ```
 
 ## Available Scripts
