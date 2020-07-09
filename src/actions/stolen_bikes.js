@@ -7,3 +7,10 @@ export function fetchSearchAction(params) {
     params,
   });
 }
+
+export function fetchCaseDetailAction(id) {
+  return APIResquest({
+    uri: `incidents/${id}`,
+    method: "GET",
+  });
+}
