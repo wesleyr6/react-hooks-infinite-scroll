@@ -6,7 +6,11 @@ const expressStaticGzip = require("express-static-gzip");
 const port = process.env.PORT || 5000;
 const app = express();
 
-app.use("/", expressStaticGzip("/build"));
+app.use(
+  expressStaticGzip(path.join(__dirname, "build"), {
+    enableBrotli: true,
+  })
+);
 app.use(express.static(`${__dirname}/build`));
 app.use(secure);
 
