@@ -1,11 +1,21 @@
 import React from "react";
+import Head from "../../components/Head";
+import MasterPage from "../../components/MasterPage";
+import Wrapper from "../../components/Wrapper";
+import styles from "./index.module.sass";
 
-function Page404() {
+const Page404 = () => {
   return (
-    <div>
-      <h1>OPS! Page not Found</h1>
-    </div>
+    <>
+      <Head title="Page not found" description="" uri="/404" image="" />
+
+      <MasterPage>
+        <Wrapper>
+          <h1 className={styles.title}>OPS! Page not found!</h1>
+        </Wrapper>
+      </MasterPage>
+    </>
   );
-}
+};
 
 export default Page404;
