@@ -2,7 +2,7 @@ This project was built to practice React Hooks and Context API
 
 ## Google Lighthouse (desktop)
 
-![Google Lighthouse](https://github.com/wesleyr6/react-stolen-bikes/blob/master/public/google-lighthouse-desktop.png)
+![Google Lighthouse](/public/google-lighthouse-desktop.png)
 
 ## Preview
 
