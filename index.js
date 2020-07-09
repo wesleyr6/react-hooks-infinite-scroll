@@ -5,6 +5,8 @@ const secure = require("ssl-express-www");
 const port = process.env.PORT || 5000;
 const app = express();
 
+app.use(expressStaticGzip(path.join(__dirname, "build")));
+
 app.use(express.static(`${__dirname}/build`));
 
 app.use(secure);
