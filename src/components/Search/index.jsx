@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import queryString from "query-string";
 import moment from "moment";
@@ -34,32 +34,24 @@ const Search = ({ children, history }) => {
     SearchContext
   );
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   const defaultDateFrom = new Date(moment().subtract(1, "months"));
   const defaultDateTo = new Date();
-
-  const [currentPage, setCurrentPage] = useState(1);
 
   const watchDateFrom = watch("txtDateFrom");
   const watchDateTo = watch("txtDateTo");
 
   useEffect(() => {
-    getQueryStringAndUpdateFields();
-
-    if (history.location.search === "") {
-      updateSearchHistory(getValues());
-    } else {
-      fetchResults();
-    }
-
+    fetchResults();
     // eslint-disable-next-line
   }, [history.location.search]);
 
   const onHandlePageChange = async (page) => {
-    setCurrentPage(page);
     setUpdateHistory([{ name: "page", value: page }]);
   };
 
-  const updateSearchHistory = (fields) => {
+  const onHandleSubmit = (fields) => {
     const newFields = fields;
 
     if (fields.txtDateFrom) {
@@ -80,12 +72,8 @@ const Search = ({ children, history }) => {
     setUpdateHistory(historyFields);
   };
 
-  const onHandleSubmit = (fields) => {
-    updateSearchHistory(fields);
-  };
-
   const getQueryStringAndUpdateFields = () => {
-    const { dateFrom, dateTo, search } =
+    const { dateFrom, dateTo, search, page } =
       queryString.parse(history.location.search) || "";
 
     if (dateFrom && isValidUnixDate(dateFrom)) {
@@ -107,20 +95,30 @@ const Search = ({ children, history }) => {
     } else {
       setValue("txtSearch", "");
     }
-  };
-
-  const fetchResults = () => {
-    // getQueryStringAndUpdateFields();
-
-    const newFields = getValues();
-    const { page } = queryString.parse(history.location.search) || "";
 
     if (page && isNumber(page)) {
       setCurrentPage(Number(page));
-      newFields.page = Number(page);
+      setValue("txtPage", Number(page));
     } else {
-      newFields.page = currentPage;
+      setCurrentPage(Number(1));
+      setValue("txtPage", Number(1));
     }
+  };
+
+  const fetchResults = () => {
+    if (history.location.search === "") {
+      // RESET FIELDS TO DEFAULT VALUES WHEN CLEAR THE QUERY STRING PARAMS
+      setValue("txtDateFrom", defaultDateFrom);
+      setValue("txtDateTo", defaultDateTo);
+      setValue("txtSearch", "");
+      setValue("txtPage", 1);
+      setCurrentPage(Number(1));
+    } else {
+      // VALIDATE QUERY STRING PARAMS AND FILL THE SEARCH FIELDS
+      getQueryStringAndUpdateFields();
+    }
+
+    const newFields = getValues();
 
     if (newFields.txtDateFrom) {
       newFields.txtDateFrom = moment(newFields.txtDateFrom).unix();
@@ -128,6 +126,10 @@ const Search = ({ children, history }) => {
 
     if (newFields.txtDateTo) {
       newFields.txtDateTo = moment(newFields.txtDateTo).unix();
+    }
+
+    if (newFields.txtPage) {
+      newFields.txtPage = Number(newFields.txtPage);
     }
 
     fetchSearch(newFields);
@@ -203,6 +205,8 @@ const Search = ({ children, history }) => {
         </Col>
 
         <Col xl={2} lg={3} md={12} xs={12}>
+          <input type="hidden" name="txtPage" ref={register} defaultValue={1} />
+
           <Button
             type="submit"
             className={styles.btn}
@@ -240,7 +244,7 @@ const Search = ({ children, history }) => {
         <Paginator
           itemsBeingShowed={searchResults.length}
           currentPage={currentPage}
-          totalItems={300}
+          totalItems={100}
           onHandlePageChange={(showing, page) => onHandlePageChange(page)}
         />
       )}

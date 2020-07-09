@@ -18,7 +18,7 @@ export const SearchProvider = (props) => {
       const { incidents } = await fetchSearchAction({
         occurred_before: newFields.txtDateTo,
         occurred_after: newFields.txtDateFrom,
-        page: newFields.page || 1,
+        page: newFields.txtPage,
         per_page: itemsPerPage,
         incident_type: "theft",
         query: newFields.txtSearch,
