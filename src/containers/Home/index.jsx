@@ -11,7 +11,7 @@ const Home = () => {
 
   return (
     <>
-      <Head title="Stolen Bikes" description="" uri="/" image="" />
+      <Head title="Stolen Bikes" description="stolen bikes" uri="/" image="" />
 
       <MasterPage>
         <Wrapper>

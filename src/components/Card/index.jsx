@@ -18,6 +18,9 @@ const Card = ({
   return (
     <li className={styles.card}>
       <Link to={`/case/${id}`} className={styles.thumbnailLink}>
+        <span className={styles.thumnailLinkDiscernibleName}>
+          Photo: {title}
+        </span>
         <LazyLoadImage
           src={thumbnail ? thumbnail : IMG_NoPhoto}
           alt={title}

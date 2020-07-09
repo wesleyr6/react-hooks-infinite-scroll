@@ -59,11 +59,12 @@ const Field = React.forwardRef((props, ref) => {
 
   return (
     <fieldset className={styles.fieldset}>
-      {!!label && (
-        <label htmlFor={id} className={styles.label}>
-          {label}
-        </label>
-      )}
+      <label
+        htmlFor={id}
+        className={`${styles.label} ${label ? "" : styles.labelHide}`}
+      >
+        {label ? label : name}
+      </label>
 
       <InputRender
         ref={ref}
