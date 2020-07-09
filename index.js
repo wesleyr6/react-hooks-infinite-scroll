@@ -6,21 +6,8 @@ const expressStaticGzip = require("express-static-gzip");
 const port = process.env.PORT || 5000;
 const app = express();
 
-app.use(
-  "/",
-  expressStaticGzip("/build", {
-    enableBrotli: true,
-    customCompressions: [
-      {
-        encodingName: "deflate",
-        fileExtension: "zz",
-      },
-    ],
-    orderPreference: ["br"],
-  })
-);
-
-// app.use(express.static(`${__dirname}/build`));
+app.use("/", expressStaticGzip("/build"));
+app.use(express.static(`${__dirname}/build`));
 app.use(secure);
 
 app.get("*", (req, res) => {
