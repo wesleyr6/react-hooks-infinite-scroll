@@ -140,7 +140,7 @@ const Search = ({ children, history }) => {
       method="GET"
     >
       <Row className={styles.filters}>
-        <Col lg={4} md={4} sm={12} xs={12}>
+        <Col xl={6} lg={5} md={12} xs={12}>
           <Field
             type="text"
             name="txtSearch"
@@ -149,10 +149,11 @@ const Search = ({ children, history }) => {
             defaultValue=""
             inputErrors={errors}
             ref={register}
+            className={styles.searchInput}
           />
         </Col>
 
-        <Col lg={3} md={3} sm={6} xs={6}>
+        <Col xl={2} lg={2} md={6} xs={6}>
           <Controller
             control={control}
             name="txtDateFrom"
@@ -176,7 +177,7 @@ const Search = ({ children, history }) => {
           />
         </Col>
 
-        <Col lg={3} md={3} sm={6} xs={6}>
+        <Col xl={2} lg={2} md={6} xs={6}>
           <Controller
             control={control}
             name="txtDateTo"
@@ -201,7 +202,7 @@ const Search = ({ children, history }) => {
           />
         </Col>
 
-        <Col lg={2} md={2} sm={12} xs={12}>
+        <Col xl={2} lg={3} md={12} xs={12}>
           <Button
             type="submit"
             className={styles.btn}
