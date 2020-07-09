@@ -23,7 +23,8 @@
     "react-js-pagination": "^3.0.3",
     "react-lazy-load-image-component": "^1.5.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "ssl-express-www": "^3.0.7"
   },
   "scripts": {
     "dev": "react-scripts start",
